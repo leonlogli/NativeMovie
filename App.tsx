@@ -1,7 +1,8 @@
 import React from 'react';
 import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-// import { StatusBar } from 'expo-status-bar';
+import { StatusBar } from 'react-native';
+
 import RootNavigator from './src/navigators/RootNavigator';
 
 const queryClient = new QueryClient();
@@ -21,7 +22,7 @@ export default function App() {
       >
         <RootNavigator />
       </NavigationContainer>
-      {/* <StatusBar style="light" /> */}
+      <StatusBar barStyle="light-content" backgroundColor="#111111" />
     </QueryClientProvider>
   );
 }
