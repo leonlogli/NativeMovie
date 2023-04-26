@@ -64,8 +64,6 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
     fetchNowPlayingMovies,
   );
 
-  console.log(env);
-
   const upcomingQuery = useQuery(['upcoming-movies'], fetchUpcomingMovies);
   const theme = useTheme();
   const insets = useSafeAreaInsets();

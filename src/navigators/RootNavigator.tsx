@@ -1,11 +1,10 @@
-import { View, Text } from "react-native";
-import React from "react";
+import React from 'react';
 import {
   createNativeStackNavigator,
   NativeStackScreenProps,
-} from "@react-navigation/native-stack";
-import HomeScreen from "../screens/HomeScreen";
-import DetailsScreen from "../screens/DetailsScreen";
+} from '@react-navigation/native-stack';
+import HomeScreen from '../screens/HomeScreen';
+import DetailsScreen from '../screens/DetailsScreen';
 
 export type RootStackParamList = {
   Home: undefined;

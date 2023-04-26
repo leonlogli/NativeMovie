@@ -35,6 +35,7 @@ const fetchMove = async (movieId: number): Promise<IMovieDetails> => {
   });
 
   const data = await res.json();
+
   return data;
 };
 
