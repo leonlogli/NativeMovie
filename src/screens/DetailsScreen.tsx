@@ -19,7 +19,7 @@ import {
 import env from '../../env';
 import { useQuery } from '@tanstack/react-query';
 import { useTheme } from '@react-navigation/native';
-// import Icons from '@expo/vector-icons/MaterialCommunityIcons';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 // import { LinearGradient } from 'expo-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { IMoveList } from '../types/move-list';
@@ -181,7 +181,7 @@ const DetailsScreen = ({
                     gap: 4,
                   }}
                 >
-                  {/* <Icons name="play" size={22} color={'#000'} /> */}
+                  <Icons name="play" size={22} color={'#000'} />
                   <Text style={{ color: '#000', fontWeight: '600' }}>Play</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -196,7 +196,7 @@ const DetailsScreen = ({
                     gap: 4,
                   }}
                 >
-                  {/* <Icons name="plus" size={22} color={'#fff'} /> */}
+                  <Icons name="plus" size={22} color={'#fff'} />
                 </TouchableOpacity>
                 <View style={{ flex: 1 }} />
                 <TouchableOpacity
@@ -211,7 +211,7 @@ const DetailsScreen = ({
                     gap: 4,
                   }}
                 >
-                  {/* <Icons name="download" size={22} color={'#fff'} /> */}
+                  <Icons name="download" size={22} color={'#fff'} />
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{
@@ -225,7 +225,7 @@ const DetailsScreen = ({
                     gap: 4,
                   }}
                 >
-                  {/* <Icons name="dots-horizontal" size={22} color={'#fff'} /> */}
+                  <Icons name="dots-horizontal" size={22} color={'#fff'} />
                 </TouchableOpacity>
               </View>
             </View>
@@ -247,7 +247,7 @@ const DetailsScreen = ({
                 }}
               >
                 Genres -{' '}
-                {query.data.genres.map((genre) => genre.name).join(', ')}
+                {query.data.genres?.map((genre) => genre.name).join(', ')}
               </Text>
               <Text
                 style={{
@@ -270,7 +270,7 @@ const DetailsScreen = ({
               >
                 Distribution -{' '}
                 {query.data.production_companies
-                  .map((genre) => genre.name)
+                  ?.map((genre) => genre.name)
                   .join(', ')}
               </Text>
             </View>
@@ -297,7 +297,7 @@ const DetailsScreen = ({
               </View>
             ) : (
               <View style={{ padding: 16, gap: 16 }}>
-                {reviewsQuery.data.results.map((review) => (
+                {reviewsQuery.data.results?.map((review) => (
                   <View
                     key={review.id}
                     style={{
@@ -363,7 +363,7 @@ const DetailsScreen = ({
                           >
                             {review.author_details.rating}/10
                           </Text>
-                          {/* <Icons name="star" size={24} color="#facc15" /> */}
+                          <Icons name="star" size={24} color="#facc15" />
                         </View>
                       )}
                     </View>
@@ -437,7 +437,7 @@ const DetailsScreen = ({
               gap: 4,
             }}
           >
-            {/* <Icons name="arrow-left" size={22} color={'#fff'} /> */}
+            <Icons name="arrow-left" size={22} color={'#fff'} />
           </TouchableOpacity>
 
           <View
@@ -462,7 +462,7 @@ const DetailsScreen = ({
               gap: 4,
             }}
           >
-            {/* <Icons name="cast" size={22} color={'#fff'} /> */}
+            <Icons name="cast" size={22} color={'#fff'} />
           </TouchableOpacity>
         </View>
       </View>

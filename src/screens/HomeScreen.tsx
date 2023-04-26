@@ -13,7 +13,7 @@ import {
   MOVIE_IMAGE_URL,
   POSTER_ASPECT_RATIO,
 } from '../utils/constants';
-// import Icons from '@expo/vector-icons/MaterialCommunityIcons';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import env from '../../env';
 import { useQuery } from '@tanstack/react-query';
 import { IMoveList } from '../types/move-list';
@@ -162,7 +162,7 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
                   gap: 4,
                 }}
               >
-                {/* <Icons name="play" size={22} color={'#000'} /> */}
+                <Icons name="play" size={22} color={'#000'} />
                 <Text style={{ color: '#000', fontWeight: '600' }}>Play</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -176,7 +176,7 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
                   gap: 4,
                 }}
               >
-                {/* <Icons name="plus" size={22} color={'#fff'} /> */}
+                <Icons name="plus" size={22} color={'#fff'} />
                 <Text style={{ color: '#fff', fontWeight: '600' }}>Add</Text>
               </TouchableOpacity>
             </View>
