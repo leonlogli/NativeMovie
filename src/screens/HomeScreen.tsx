@@ -19,7 +19,7 @@ import { useQuery } from '@tanstack/react-query';
 import { IMoveList } from '../types/move-list';
 import { RootStackScreenProps } from '../navigators/RootNavigator';
 import MoviesHorizontalList from '../components/MoviesHorizontalList';
-// import { LinearGradient } from 'expo-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 import { useTheme } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -120,16 +120,10 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
               <ActivityIndicator />
             </View>
           )}
-          {/* <LinearGradient
+          <LinearGradient
             colors={[theme.colors.background, 'transparent']}
-            start={{
-              x: 0,
-              y: 1,
-            }}
-            end={{
-              x: 0,
-              y: 0,
-            }}
+            start={{ x: 0, y: 1 }}
+            end={{ x: 0, y: 0 }}
             style={{
               height: '40%',
               position: 'absolute',
@@ -138,7 +132,7 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
               right: 0,
               zIndex: 2,
             }}
-          /> */}
+          />
 
           <View style={[StyleSheet.absoluteFill, { zIndex: 2, padding: 16 }]}>
             <View style={{ flex: 1 }} />
@@ -222,17 +216,10 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
           paddingTop: insets.top,
         }}
       >
-        {/* <LinearGradient
-          pointerEvents="none"
+        <LinearGradient
           colors={['transparent', theme.colors.background]}
-          start={{
-            x: 0,
-            y: 1,
-          }}
-          end={{
-            x: 0,
-            y: 0,
-          }}
+          start={{ x: 0, y: 1 }}
+          end={{ x: 0, y: 0 }}
           style={{
             position: 'absolute',
             top: 0,
@@ -241,7 +228,7 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
             right: 0,
             zIndex: -1,
           }}
-        /> */}
+        />
         <View
           style={{
             flexDirection: 'row',

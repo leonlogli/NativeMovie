@@ -20,7 +20,7 @@ import env from '../../env';
 import { useQuery } from '@tanstack/react-query';
 import { useTheme } from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
-// import { LinearGradient } from 'expo-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { IMoveList } from '../types/move-list';
 import MoviesHorizontalList from '../components/MoviesHorizontalList';
@@ -120,7 +120,8 @@ const DetailsScreen = ({
               resizeMode="cover"
               style={StyleSheet.absoluteFill}
             />
-            {/* <LinearGradient
+
+            <LinearGradient
               colors={[colors.background, 'transparent']}
               start={{
                 x: 0,
@@ -138,7 +139,7 @@ const DetailsScreen = ({
                 right: 0,
                 zIndex: 2,
               }}
-            /> */}
+            />
 
             <View style={[StyleSheet.absoluteFill, { zIndex: 2, padding: 16 }]}>
               <View style={{ flex: 1 }} />
@@ -396,8 +397,7 @@ const DetailsScreen = ({
           paddingTop: insets.top,
         }}
       >
-        {/* <LinearGradient
-          pointerEvents="none"
+        <LinearGradient
           colors={['transparent', colors.background]}
           start={{
             x: 0,
@@ -415,7 +415,7 @@ const DetailsScreen = ({
             right: 0,
             zIndex: -1,
           }}
-        /> */}
+        />
         <View
           style={{
             flexDirection: 'row',
