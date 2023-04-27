@@ -3,9 +3,10 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useEffect } from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { RootStackScreenProps } from '../../../Routes';
 import MoviesHorizontalList from '../../../components/MoviesHorizontalList';
-import movieListService from '../../../services/movieListService';
+import movieListService, { Movie } from '../../../services/movieListService';
 import Banner from '../Banner';
 import TopMenu from '../TopMenu';
 import styles from './Home.style';
@@ -29,6 +30,10 @@ const Home = ({ navigation }: RootStackScreenProps<'Home'>) => {
     movieListService.getUpcomingMovies,
   );
 
+  const handleMovieClick = (selectedMovie: Movie) => {
+    navigation.push('MovieDetails', { movieId: selectedMovie.id });
+  };
+
   useEffect(() => {
     navigation.setOptions({ headerShown: false });
   }, [navigation, theme]);
@@ -41,25 +46,19 @@ const Home = ({ navigation }: RootStackScreenProps<'Home'>) => {
         <Banner />
 
         <MoviesHorizontalList
-          onMoviePress={(movie) =>
-            navigation.navigate('Details', { movieId: movie.id })
-          }
+          onMoviePress={handleMovieClick}
           title="Now Playing"
           query={nowPlayingMoviesQuery}
         />
 
         <MoviesHorizontalList
-          onMoviePress={(movie) =>
-            navigation.navigate('Details', { movieId: movie.id })
-          }
+          onMoviePress={handleMovieClick}
           title="Popular"
           query={popularMoviesQuery}
         />
 
         <MoviesHorizontalList
-          onMoviePress={(movie) =>
-            navigation.navigate('Details', { movieId: movie.id })
-          }
+          onMoviePress={handleMovieClick}
           title="Upcoming"
           query={upcomingQuery}
         />

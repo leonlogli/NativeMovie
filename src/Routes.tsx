@@ -4,11 +4,11 @@ import {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
 import Home from './screens/home';
-import DetailsScreen from './screens/DetailsScreen';
+import MovieDetails from './screens/movieDetails';
 
 export type RootStackParamList = {
   Home: undefined;
-  Details: {
+  MovieDetails: {
     movieId: number;
   };
 };
@@ -22,7 +22,7 @@ const Routes = () => {
   return (
     <RootStack.Navigator>
       <RootStack.Screen name="Home" component={Home} />
-      <RootStack.Screen name="Details" component={DetailsScreen} />
+      <RootStack.Screen name="MovieDetails" component={MovieDetails} />
     </RootStack.Navigator>
   );
 };
