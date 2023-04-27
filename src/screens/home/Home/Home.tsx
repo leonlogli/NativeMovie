@@ -5,7 +5,7 @@ import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { RootStackScreenProps } from '../../../Routes';
-import MoviesHorizontalList from '../../../components/MoviesHorizontalList';
+import HorizontalMovieList from '../../../components/HorizontalMovieList';
 import movieListService, { Movie } from '../../../services/movieListService';
 import Banner from '../Banner';
 import TopMenu from '../TopMenu';
@@ -45,22 +45,22 @@ const Home = ({ navigation }: RootStackScreenProps<'Home'>) => {
       >
         <Banner />
 
-        <MoviesHorizontalList
+        <HorizontalMovieList
           onMoviePress={handleMovieClick}
           title="Now Playing"
-          query={nowPlayingMoviesQuery}
+          {...nowPlayingMoviesQuery}
         />
 
-        <MoviesHorizontalList
+        <HorizontalMovieList
           onMoviePress={handleMovieClick}
           title="Popular"
-          query={popularMoviesQuery}
+          {...popularMoviesQuery}
         />
 
-        <MoviesHorizontalList
+        <HorizontalMovieList
           onMoviePress={handleMovieClick}
           title="Upcoming"
-          query={upcomingQuery}
+          {...upcomingQuery}
         />
 
         <View style={{ height: insets.bottom + 16 }} />

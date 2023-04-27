@@ -7,26 +7,28 @@ import Routes from './src/Routes';
 
 const queryClient = new QueryClient();
 
-export default function App() {
+const theme = {
+  ...DarkTheme,
+  colors: {
+    ...DarkTheme.colors,
+    background: '#111111',
+    card: '#1E1E1E',
+  },
+};
+
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer
-        theme={{
-          ...DarkTheme,
-          colors: {
-            ...DarkTheme.colors,
-            background: '#111111',
-            card: '#1E1E1E',
-          },
-        }}
-      >
+      <NavigationContainer theme={theme}>
         <Routes />
       </NavigationContainer>
       <StatusBar
         translucent
         backgroundColor="transparent"
-        // barStyle="light-content" backgroundColor="#111111"
+        barStyle="light-content"
       />
     </QueryClientProvider>
   );
-}
+};
+
+export default App;

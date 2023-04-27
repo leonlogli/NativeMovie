@@ -5,15 +5,15 @@ import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { RootStackScreenProps } from '../../../Routes';
-import MoviesHorizontalList from '../../../components/MoviesHorizontalList';
+import HorizontalMovieList from '../../../components/HorizontalMovieList';
 import movieDetailsService from '../../../services/movieDetailsService';
+import { Movie } from '../../../services/movieListService';
 import sharedStyle from '../../../utils/sharedStyle';
 import Genres from '../Genres';
 import MoviePoster from '../MoviePoster';
 import Reviews from '../Reviews';
 import TopbarActions from '../TopbarActions';
 import styles from './MovieDetails.style';
-import { Movie } from '../../../services/movieListService';
 
 const MovieDetails = ({
   navigation,
@@ -57,10 +57,10 @@ const MovieDetails = ({
 
           <Genres movie={movie} />
 
-          <MoviesHorizontalList
+          <HorizontalMovieList
             onMoviePress={handleMovieClick}
             title="Recomended Movies"
-            query={recommendationsQuery}
+            {...recommendationsQuery}
           />
 
           <Reviews movieId={movieId} />
