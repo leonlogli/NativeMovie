@@ -24,7 +24,8 @@ export default function App() {
       </NavigationContainer>
       <StatusBar
         translucent
-        backgroundColor="transparent" /*barStyle="light-content" backgroundColor="#111111"*/
+        backgroundColor="transparent"
+        // barStyle="light-content" backgroundColor="#111111"
       />
     </QueryClientProvider>
   );
