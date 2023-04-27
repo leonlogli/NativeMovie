@@ -3,7 +3,7 @@ import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
+import Home from './screens/home';
 import DetailsScreen from './screens/DetailsScreen';
 
 export type RootStackParamList = {
@@ -18,13 +18,13 @@ const RootStack = createNativeStackNavigator<RootStackParamList>();
 export type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T>;
 
-const RootNavigator = () => {
+const Routes = () => {
   return (
     <RootStack.Navigator>
-      <RootStack.Screen name="Home" component={HomeScreen} />
+      <RootStack.Screen name="Home" component={Home} />
       <RootStack.Screen name="Details" component={DetailsScreen} />
     </RootStack.Navigator>
   );
 };
 
-export default RootNavigator;
+export default Routes;
