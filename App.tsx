@@ -22,7 +22,10 @@ export default function App() {
       >
         <RootNavigator />
       </NavigationContainer>
-      <StatusBar barStyle="light-content" backgroundColor="#111111" />
+      <StatusBar
+        translucent
+        backgroundColor="transparent" /*barStyle="light-content" backgroundColor="#111111"*/
+      />
     </QueryClientProvider>
   );
 }
