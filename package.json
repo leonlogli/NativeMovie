@@ -1,5 +1,5 @@
 {
-  "name": "NativeMovie",
+  "name": "native-movie",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,8 +14,6 @@
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@tanstack/react-query": "^4.29.5",
-    "install": "^0.13.0",
-    "npm": "^9.6.5",
     "react": "18.2.0",
     "react-native": "0.71.7",
     "react-native-linear-gradient": "^2.6.2",
