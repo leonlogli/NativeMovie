@@ -16,7 +16,7 @@ import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MoviesHorizontalList from '../components/MoviesHorizontalList';
 import { RootStackScreenProps } from '../Routes';
 import movieListService from '../services/movieListService';
-import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from '../utils/constants';
+import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from '../config/constants';
 
 const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
   const popularMoviesQuery = useQuery(

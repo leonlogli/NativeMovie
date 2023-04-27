@@ -18,7 +18,7 @@ import MoviesHorizontalList from '../components/MoviesHorizontalList';
 import { RootStackScreenProps } from '../Routes';
 import movieDetailsService from '../services/movieDetailsService';
 import reviewService from '../services/reviewService';
-import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from '../utils/constants';
+import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from '../config/constants';
 
 const DetailsScreen = ({
   navigation,
