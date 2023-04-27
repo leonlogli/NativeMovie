@@ -1,73 +1,43 @@
-import {
-  View,
-  ActivityIndicator,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-} from 'react-native';
+import { useTheme } from '@react-navigation/native';
+import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useMemo } from 'react';
 import {
-  MOVIE_API_URL,
-  MOVIE_IMAGE_URL,
-  POSTER_ASPECT_RATIO,
-} from '../utils/constants';
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
-import env from '../../env';
-import { useQuery } from '@tanstack/react-query';
-import { IMoveList } from '../types/move-list';
-import { RootStackScreenProps } from '../navigators/RootNavigator';
-import MoviesHorizontalList from '../components/MoviesHorizontalList';
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { useTheme } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
-const fetchPopularMoves = async (): Promise<IMoveList> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/popular`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-  return data;
-};
-const fetchNowPlayingMovies = async (): Promise<IMoveList> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/now_playing`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-  return data;
-};
-const fetchUpcomingMovies = async (): Promise<IMoveList> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/upcoming`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-  return data;
-};
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MoviesHorizontalList from '../components/MoviesHorizontalList';
+import { RootStackScreenProps } from '../Routes';
+import movieListService from '../services/movieListService';
+import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from '../utils/constants';
 
 const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
-  const popularMoviesQuery = useQuery(['popular-movies'], fetchPopularMoves);
-  const nowPlayingMoviesQuery = useQuery(
-    ['now-polaying-movies'],
-    fetchNowPlayingMovies,
+  const popularMoviesQuery = useQuery(
+    ['popular-movies'],
+    movieListService.getPopularMoves,
   );
 
-  const upcomingQuery = useQuery(['upcoming-movies'], fetchUpcomingMovies);
+  const nowPlayingMoviesQuery = useQuery(
+    ['now-polaying-movies'],
+    movieListService.getNowPlayingMovies,
+  );
+
+  const upcomingQuery = useQuery(
+    ['upcoming-movies'],
+    movieListService.getUpcomingMovies,
+  );
+
   const theme = useTheme();
   const insets = useSafeAreaInsets();
   const featuredIndex = useMemo(() => Math.floor(Math.random() * 19), []);
+
   const featuredMovie = useMemo(
     () =>
       nowPlayingMoviesQuery.isSuccess
@@ -77,11 +47,7 @@ const HomeScreen = ({ navigation }: RootStackScreenProps<'Home'>) => {
   );
 
   useEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-
-    return () => {};
+    navigation.setOptions({ headerShown: false });
   }, [navigation, theme]);
 
   return (

@@ -1,32 +1,33 @@
+import { UseQueryResult } from '@tanstack/react-query';
+import React from 'react';
 import {
-  View,
+  Button,
+  FlatList,
+  Image,
+  StyleSheet,
   Text,
   TouchableOpacity,
-  Image,
-  FlatList,
-  Button,
-  StyleSheet,
-} from "react-native";
-import React from "react";
-import { UseQueryResult } from "@tanstack/react-query";
-import { IMoveListItem, IMoveList } from "../types/move-list";
-import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from "../utils/constants";
-import { useTheme } from "@react-navigation/native";
+  View,
+} from 'react-native';
+import { useTheme } from '@react-navigation/native';
+import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from '../config/constants';
+import { Movie, MovieList } from '../services/movieListService';
 
 const MoviesHorizontalList = ({
-  query: { data, isLoading, isError, error, refetch },
+  query: { data, isLoading, isError, refetch },
   title,
   onMoviePress,
 }: {
   title: string;
-  query: UseQueryResult<IMoveList, unknown>;
-  onMoviePress: (movei: IMoveListItem) => void;
+  query: UseQueryResult<MovieList, unknown>;
+  onMoviePress: (movie: Movie) => void;
 }) => {
   const { colors } = useTheme();
+
   return (
     <View style={{ paddingVertical: 16, gap: 12 }}>
       <View style={{ paddingHorizontal: 16 }}>
-        <Text style={{ fontSize: 18, fontWeight: "600", color: "#fff" }}>
+        <Text style={{ fontSize: 18, fontWeight: '600', color: '#fff' }}>
           {title}
         </Text>
       </View>
@@ -40,7 +41,7 @@ const MoviesHorizontalList = ({
                 height: 200,
                 aspectRatio: POSTER_ASPECT_RATIO,
                 backgroundColor: colors.card,
-                overflow: "hidden",
+                overflow: 'hidden',
                 borderRadius: 12,
               }}
             />
@@ -50,11 +51,11 @@ const MoviesHorizontalList = ({
         <View
           style={{
             height: 200,
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
-          <Text style={{ textAlign: "center" }}>Something went wrong!</Text>
+          <Text style={{ textAlign: 'center' }}>Something went wrong!</Text>
           <Button title="Retry" onPress={() => refetch()} />
         </View>
       ) : (
@@ -70,11 +71,11 @@ const MoviesHorizontalList = ({
             <TouchableOpacity
               onPress={() => onMoviePress(item)}
               style={{
-                overflow: "hidden",
+                overflow: 'hidden',
                 borderRadius: 12,
                 height: 200,
                 aspectRatio: POSTER_ASPECT_RATIO,
-                position: "relative",
+                position: 'relative',
                 backgroundColor: colors.card,
               }}
             >

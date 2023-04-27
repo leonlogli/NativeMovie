@@ -1,13 +1,13 @@
-import env from '../../env';
+import api, { ID } from '../config/api';
 import { MOVIE_API_URL } from '../config/constants';
-import { IMoveList } from './movieListService';
+import { MovieList } from './movieListService';
 
-export type IMovieDetails = {
+export type MovieDetails = {
   adult: boolean;
   backdrop_path: string;
-  belongs_to_collection: IBelongs_to_collection;
+  belongs_to_collection: BelongsToCollection;
   budget: number;
-  genres: IGenresItem[];
+  genres: Genre[];
   homepage: string;
   id: number;
   imdb_id: string;
@@ -16,12 +16,12 @@ export type IMovieDetails = {
   overview: string;
   popularity: number;
   poster_path: string;
-  production_companies: IProductionCompaniesItem[];
-  production_countries: IProductionCountriesItem[];
+  production_companies: ProductionCompany[];
+  production_countries: ProductionCountry[];
   release_date: string;
   revenue: number;
   runtime: number;
-  spoken_languages: ISpokenLanguagesItem[];
+  spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
   title: string;
@@ -30,62 +30,45 @@ export type IMovieDetails = {
   vote_count: number;
 };
 
-export type IBelongs_to_collection = {
+export type BelongsToCollection = {
   id: number;
   name: string;
   poster_path: null;
   backdrop_path: null;
 };
 
-export type IGenresItem = {
+export type Genre = {
   id: number;
   name: string;
 };
 
-export type IProductionCompaniesItem = {
+export type ProductionCompany = {
   id: number;
   logo_path: null;
   name: string;
   origin_country: string;
 };
 
-export type IProductionCountriesItem = {
+export type ProductionCountry = {
   iso_3166_1: string;
   name: string;
 };
 
-export type ISpokenLanguagesItem = {
+export type SpokenLanguage = {
   english_name: string;
   iso_639_1: string;
   name: string;
 };
 
-const fetchMove = async (movieId: number): Promise<IMovieDetails> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/${movieId}`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-
-  return data;
+const getMovie = async (movieId: ID) => {
+  return api.get<MovieDetails>(`${MOVIE_API_URL}/movie/${movieId}`);
 };
 
-const fetchRecommendations = async (movieId: number): Promise<IMoveList> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/${movieId}/recommendations`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-  return data;
+const getRecommendations = async (movieId: ID) => {
+  return api.get<MovieList>(`/movie/${movieId}/recommendations`);
 };
 
 export default {
-  fetchMove,
-  fetchRecommendations,
+  getMovie,
+  getRecommendations,
 };

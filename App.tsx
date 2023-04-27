@@ -3,7 +3,7 @@ import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar } from 'react-native';
 
-import RootNavigator from './src/navigators/RootNavigator';
+import Routes from './src/Routes';
 
 const queryClient = new QueryClient();
 
@@ -20,7 +20,7 @@ export default function App() {
           },
         }}
       >
-        <RootNavigator />
+        <Routes />
       </NavigationContainer>
       <StatusBar
         translucent

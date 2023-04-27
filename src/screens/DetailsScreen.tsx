@@ -1,66 +1,24 @@
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Button,
-} from 'react-native';
-import React, { useEffect } from 'react';
-import { RootStackScreenProps } from '../navigators/RootNavigator';
-import { IMovieDetails } from '../types/move-details';
-import {
-  MOVIE_API_URL,
-  MOVIE_IMAGE_URL,
-  POSTER_ASPECT_RATIO,
-} from '../utils/constants';
-import env from '../../env';
-import { useQuery } from '@tanstack/react-query';
 import { useTheme } from '@react-navigation/native';
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useQuery } from '@tanstack/react-query';
+import React, { useEffect } from 'react';
+import {
+  ActivityIndicator,
+  Button,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { IMoveList } from '../types/move-list';
+import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MoviesHorizontalList from '../components/MoviesHorizontalList';
-import { IReviews } from '../types/move-reviews';
-
-const fetchMove = async (movieId: number): Promise<IMovieDetails> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/${movieId}`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-
-  return data;
-};
-
-const fetchRecommendations = async (movieId: number): Promise<IMoveList> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/${movieId}/recommendations`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-  return data;
-};
-const fetchReviews = async (movieId: number): Promise<IReviews> => {
-  const res = await fetch(`${MOVIE_API_URL}/movie/${movieId}/reviews`, {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${env.THE_MOVIE_DB_API_KEY}`,
-    },
-  });
-
-  const data = await res.json();
-  return data;
-};
+import { RootStackScreenProps } from '../Routes';
+import movieDetailsService from '../services/movieDetailsService';
+import reviewService from '../services/reviewService';
+import { MOVIE_IMAGE_URL, POSTER_ASPECT_RATIO } from '../utils/constants';
 
 const DetailsScreen = ({
   navigation,
@@ -68,24 +26,24 @@ const DetailsScreen = ({
     params: { movieId },
   },
 }: RootStackScreenProps<'Details'>) => {
-  const query = useQuery(['movie-details', movieId], ({ queryKey }) =>
-    fetchMove(queryKey[1] as number),
+  const query = useQuery(['getMovie', movieId], ({ queryKey }) =>
+    movieDetailsService.getMovie(queryKey[1]),
   );
+
   const recommendationsQuery = useQuery(
-    ['movie-recommendations', movieId],
-    ({ queryKey }) => fetchRecommendations(queryKey[1] as number),
+    ['getRecommendations', movieId],
+    ({ queryKey }) => movieDetailsService.getRecommendations(queryKey[1]),
   );
-  const reviewsQuery = useQuery(['movie-reviews', movieId], ({ queryKey }) =>
-    fetchReviews(queryKey[1] as number),
+
+  const reviewsQuery = useQuery(['getReviews', movieId], ({ queryKey }) =>
+    reviewService.getReviews(queryKey[1]),
   );
 
   const { colors } = useTheme();
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
+    navigation.setOptions({ headerShown: false });
   }, [navigation, query]);
 
   return (
