@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -17,10 +17,10 @@ import styles from './MovieDetails.style';
 
 const MovieDetails = ({
   navigation,
-  route: {
-    params: { movieId },
-  },
+  route,
 }: RootStackScreenProps<'MovieDetails'>) => {
+  const { movieId } = route.params;
+
   const query = useQuery(['getMovie', movieId], ({ queryKey }) =>
     movieDetailsService.getMovie(queryKey[1]),
   );
@@ -38,10 +38,6 @@ const MovieDetails = ({
   const handleMovieClick = (selectedMovie: Movie) => {
     navigation.push('MovieDetails', { movieId: selectedMovie.id });
   };
-
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation, query]);
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>

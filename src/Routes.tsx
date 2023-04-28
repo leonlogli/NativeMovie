@@ -1,15 +1,17 @@
-import React from 'react';
 import {
   createNativeStackNavigator,
   NativeStackScreenProps,
 } from '@react-navigation/native-stack';
+import React from 'react';
+
+import { ID } from './config/api';
 import Home from './screens/home';
 import MovieDetails from './screens/movieDetails';
 
 export type RootStackParamList = {
   Home: undefined;
   MovieDetails: {
-    movieId: number;
+    movieId: ID;
   };
 };
 
@@ -20,7 +22,7 @@ export type RootStackScreenProps<T extends keyof RootStackParamList> =
 
 const Routes = () => {
   return (
-    <RootStack.Navigator>
+    <RootStack.Navigator screenOptions={{ headerShown: false }}>
       <RootStack.Screen name="Home" component={Home} />
       <RootStack.Screen name="MovieDetails" component={MovieDetails} />
     </RootStack.Navigator>

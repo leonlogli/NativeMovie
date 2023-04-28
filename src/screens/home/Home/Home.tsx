@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -33,10 +33,6 @@ const Home = ({ navigation }: RootStackScreenProps<'Home'>) => {
   const handleMovieClick = (selectedMovie: Movie) => {
     navigation.push('MovieDetails', { movieId: selectedMovie.id });
   };
-
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation, theme]);
 
   return (
     <View style={styles.container}>
