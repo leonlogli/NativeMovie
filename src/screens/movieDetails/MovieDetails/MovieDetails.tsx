@@ -15,10 +15,9 @@ import Reviews from '../Reviews';
 import TopbarActions from '../TopbarActions';
 import styles from './MovieDetails.style';
 
-const MovieDetails = ({
-  navigation,
-  route,
-}: RootStackScreenProps<'MovieDetails'>) => {
+export type MovieDetailsProps = RootStackScreenProps<'MovieDetails'>;
+
+const MovieDetails = ({ navigation, route }: MovieDetailsProps) => {
   const { movieId } = route.params;
 
   const query = useQuery(['getMovie', movieId], ({ queryKey }) =>
