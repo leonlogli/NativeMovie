@@ -18,7 +18,7 @@ const TopMenu = () => {
         style={styles.gradient}
       />
       <View style={styles.container}>
-        <Text style={styles.title}>Native Movie</Text>
+        <Text style={styles.title}>Native M</Text>
         <View style={styles.buttonsContainer}>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Live</Text>

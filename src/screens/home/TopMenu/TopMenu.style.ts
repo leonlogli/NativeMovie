@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   title: {
-    color: '#ED6707',
+    color: 'tomato',
     fontWeight: '600',
     fontSize: 20,
   },
