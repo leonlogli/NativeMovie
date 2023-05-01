@@ -4,6 +4,7 @@ import { Text, View } from 'react-native';
 
 import { MovieDetails } from '../../../services/movieDetailsService';
 import styles from './Genres.style';
+import sharedStyle from '../../../utils/sharedStyle';
 
 export type GenresProps = {
   movie: MovieDetails;
@@ -15,7 +16,7 @@ const Genres = ({ movie }: GenresProps) => {
   return (
     <View style={styles.container}>
       <View style={[styles.card, { backgroundColor: colors.card }]}>
-        <Text style={[styles.title, { color: colors.text }]}>
+        <Text style={[sharedStyle.title, { color: colors.text }]}>
           Genres - {movie.genres?.map((genre) => genre.name).join(', ')}
         </Text>
         <Text style={[styles.overview, { color: colors.text }]}>

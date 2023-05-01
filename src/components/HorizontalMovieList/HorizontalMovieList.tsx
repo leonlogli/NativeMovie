@@ -4,6 +4,7 @@ import React from 'react';
 import { Button, FlatList, Text, View } from 'react-native';
 
 import { Movie, MovieList } from '../../services/movieListService';
+import sharedStyle from '../../utils/sharedStyle';
 import MoviePreview from '../MoviePreview/MoviePreview';
 import styles from './HorizontalMovieList.style';
 
@@ -27,7 +28,7 @@ const HorizontalMovieList = ({
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={sharedStyle.title}>{title}</Text>
       </View>
 
       {isLoading && (

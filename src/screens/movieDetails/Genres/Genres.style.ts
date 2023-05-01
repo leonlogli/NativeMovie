@@ -9,18 +9,12 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 32,
   },
-  title: {
-    textAlign: 'center',
-    marginBottom: 16,
-    opacity: 0.75,
-  },
   overview: {
+    marginTop: 16,
     fontSize: 16,
-    textAlign: 'center',
     lineHeight: 24,
   },
   distribution: {
-    textAlign: 'center',
     marginTop: 16,
     opacity: 0.75,
   },

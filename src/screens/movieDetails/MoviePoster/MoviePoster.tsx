@@ -5,9 +5,9 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import { MOVIE_IMAGE_URL } from '../../../config/constants';
 import { MovieDetails } from '../../../services/movieDetailsService';
+import sharedStyle from '../../../utils/sharedStyle';
 import MoviePosterActions from '../MoviePosterActions';
 import styles from './MoviePoster.style';
-import sharedStyle from '../../../utils/sharedStyle';
 
 export type MoviePosterProps = {
   movie: MovieDetails;
@@ -35,10 +35,6 @@ const MoviePoster = ({ movie }: MoviePosterProps) => {
 
       <View style={styles.infoContainer}>
         <View style={sharedStyle.flex1} />
-        <View style={styles.progressBarContainer}>
-          <View style={styles.progressBar} />
-        </View>
-
         <MoviePosterActions />
       </View>
     </View>

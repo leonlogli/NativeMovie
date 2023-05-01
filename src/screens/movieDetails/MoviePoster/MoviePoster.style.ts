@@ -24,21 +24,11 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   progressBarContainer: {
-    height: 6,
     backgroundColor: 'rgba(255,255,255,0.2)',
     borderRadius: 4,
     position: 'relative',
     marginBottom: 16,
     overflow: 'hidden',
-  },
-  progressBar: {
-    width: '30%',
-    position: 'absolute',
-    left: 0,
-    top: 0,
-    borderRadius: 4,
-    bottom: 0,
-    backgroundColor: '#FE6D05',
   },
 });
 

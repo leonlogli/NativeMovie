@@ -42,11 +42,12 @@ const styles = StyleSheet.create({
     color: '#000',
     fontWeight: '600',
   },
-  addButton: {
+  favButton: {
     backgroundColor: 'rgba(255,255,255,0.2)',
-    paddingHorizontal: 16,
+    width: 40,
     height: 40,
     alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 40,
     flexDirection: 'row',
     gap: 4,

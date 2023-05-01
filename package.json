@@ -48,10 +48,10 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json}": [
-      "eslint --ext .tsx --ext .ts src/ --fix"
+      "eslint"
     ],
     "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write ."
+      "prettier --write"
     ]
   },
   "husky": {

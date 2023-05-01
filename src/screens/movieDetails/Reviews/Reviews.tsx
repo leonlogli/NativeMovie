@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { ActivityIndicator, Button, Text, View } from 'react-native';
+
 import { ID } from '../../../config/api';
 import reviewService from '../../../services/reviewService';
+import sharedStyle from '../../../utils/sharedStyle';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import styles from './Reviews.style';
 
@@ -18,7 +20,7 @@ const Reviews = ({ movieId }: ReviewsProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Reviews</Text>
+        <Text style={sharedStyle.title}>Reviews</Text>
       </View>
       {reviewsQuery.isLoading ? (
         <ActivityIndicator />

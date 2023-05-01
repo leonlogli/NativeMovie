@@ -11,9 +11,11 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 import { MOVIE_IMAGE_URL } from '../../../config/constants';
 import movieListService from '../../../services/movieListService';
 import styles from './Banner.style';
+import FavoriteIcon from '../../../components/FavoriteIcon';
 
 const Banner = () => {
   const nowPlayingMoviesQuery = useQuery(
@@ -59,13 +61,10 @@ const Banner = () => {
         <View style={styles.flex1} />
         <View style={styles.buttonGroup}>
           <TouchableOpacity style={styles.playButton}>
-            <Icons name="play" size={22} color={'#000'} />
+            <Icons name="play" size={22} color="#000" />
             <Text style={styles.playButtonText}>Play</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.addButton}>
-            <Icons name="plus" size={22} color={'#fff'} />
-            <Text style={styles.addButtonText}>Add</Text>
-          </TouchableOpacity>
+          <FavoriteIcon />
         </View>
       </View>
     </View>

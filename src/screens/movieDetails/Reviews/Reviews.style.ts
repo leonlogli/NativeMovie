@@ -7,11 +7,6 @@ const styles = StyleSheet.create({
   header: {
     paddingHorizontal: 16,
   },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#fff',
-  },
   errorContainer: {
     alignItems: 'center',
   },

@@ -10,11 +10,6 @@ const styles = StyleSheet.create({
   titleContainer: {
     paddingHorizontal: 16,
   },
-  title: {
-    fontSize: 18,
-    fontWeight: '600',
-    color: '#fff',
-  },
   placeholderMovieContainer: {
     height: 200,
     aspectRatio: POSTER_ASPECT_RATIO,
