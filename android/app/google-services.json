@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "176478689977",
+    "firebase_url": "https://moviehood-tv.firebaseio.com",
+    "project_id": "moviehood-tv",
+    "storage_bucket": "moviehood-tv.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:176478689977:android:2aa795185e574a0bb1d968",
+        "android_client_info": {
+          "package_name": "com.nativemovie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "176478689977-56ngo57t7rc6ne6tp3ehb0jcn3euj6co.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nativemovie",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "176478689977-jqe4tsoik7pphm78ea51jjg910dqj0dh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE-_qPuLqvsSEq-_UunqxzyeS8itIa8t4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "176478689977-jqe4tsoik7pphm78ea51jjg910dqj0dh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
