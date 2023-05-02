@@ -4,7 +4,7 @@ import React from 'react';
 import { ActivityIndicator, ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-import { RootStackScreenProps } from '../../../Routes';
+import { RootStackScreenProps } from '../../../navigations';
 import HorizontalMovieList from '../../../components/HorizontalMovieList';
 import movieDetailsService from '../../../services/movieDetailsService';
 import { Movie } from '../../../services/movieListService';

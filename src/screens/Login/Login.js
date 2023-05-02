@@ -68,7 +68,7 @@ const Login = ({ navigation }) => {
           <Text style={styles.buttonText}>Login</Text>
         </LinearGradient>
 
-        <Separator text="Or login with" />
+        <Separator>Or login with</Separator>
 
         <GoogleLogin />
 

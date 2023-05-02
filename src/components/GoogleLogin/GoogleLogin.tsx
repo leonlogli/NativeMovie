@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, TouchableOpacity } from 'react-native';
 import styles from './GoogleLogin.style';
 
-const googleImg = require('../..assets/google.png');
+const googleImg = require('../../assets/google.png');
 
 const GoogleLogin = () => {
   const handleGoogleLogin = async () => {

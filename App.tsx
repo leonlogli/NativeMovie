@@ -3,7 +3,8 @@ import { DarkTheme, NavigationContainer } from '@react-navigation/native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { StatusBar } from 'react-native';
 
-import Routes from './src/Routes';
+import Navigation from './src/navigations';
+import AuthProvider from './src/context/AuthProvider';
 
 const queryClient = new QueryClient();
 
@@ -19,14 +20,17 @@ const theme = {
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavigationContainer theme={theme}>
-        <Routes />
-      </NavigationContainer>
-      <StatusBar
-        translucent
-        backgroundColor="transparent"
-        barStyle="light-content"
-      />
+      <AuthProvider>
+        <NavigationContainer theme={theme}>
+          <Navigation />
+        </NavigationContainer>
+
+        <StatusBar
+          translucent
+          backgroundColor="transparent"
+          barStyle="light-content"
+        />
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

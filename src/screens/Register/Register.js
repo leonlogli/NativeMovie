@@ -80,7 +80,7 @@ const Register = ({ navigation }) => {
           <Text style={styles.buttonText}>Register</Text>
         </LinearGradient>
 
-        <Separator text="Or sign up with" />
+        <Separator>Or sign up with</Separator>
 
         <GoogleLogin />
 

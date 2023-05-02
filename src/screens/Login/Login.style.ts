@@ -30,13 +30,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    borderRadius: 100,
+    borderRadius: 10,
     width: 150,
     alignSelf: 'center',
     alignItems: 'center',
     paddingVertical: 5,
-    marginTop: 100,
-    marginBottom: 10,
+    marginTop: 16,
   },
   buttonText: {
     color: 'white',
@@ -46,6 +45,7 @@ const styles = StyleSheet.create({
     color: '#03bafc',
     fontSize: 16,
     textAlign: 'center',
+    marginTop: 16,
   },
 });
 
