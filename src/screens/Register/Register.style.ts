@@ -1,10 +1,11 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { vh } from '../../utils/dimensions';
 
 const styles = StyleSheet.create({
   linearGradient: {
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
-    height: Dimensions.get('window').height * 0.2,
+    height: vh * 0.2,
     width: '100%',
     alignItems: 'center',
     paddingTop: 40,
@@ -31,10 +32,10 @@ const styles = StyleSheet.create({
   },
   button: {
     borderRadius: 10,
-    width: 150,
+    width: 160,
     alignSelf: 'center',
     alignItems: 'center',
-    paddingVertical: 5,
+    paddingVertical: 7,
     marginTop: 16,
   },
   buttonText: {

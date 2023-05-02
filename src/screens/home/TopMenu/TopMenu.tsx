@@ -6,12 +6,15 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { RootNavigationProp } from '../../../navigations';
 import styles from './TopMenu.style';
+import { useAuth } from '../../../context/AuthProvider';
 
 const avatar = require('../../../assets/avatar.png');
 
 const TopMenu = () => {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
+
+  const { user, logout } = useAuth();
 
   const navigation = useNavigation<RootNavigationProp>();
 
@@ -33,9 +36,11 @@ const TopMenu = () => {
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Favorites</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
+          {user && (
+            <TouchableOpacity style={styles.button} onPress={logout}>
+              <Text style={styles.buttonText}>Logout</Text>
+            </TouchableOpacity>
+          )}
         </View>
         <TouchableOpacity style={styles.avatarContainer} onPress={goToLogin}>
           <Image source={avatar} style={styles.avatar} resizeMode="cover" />

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { Alert, Text, View } from 'react-native';
+import { Alert, Text, View, Pressable } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import GoogleLogin from '../../components/GoogleLogin';
-import Separator from '../../components/Separator';
 import Input from '../../components/Input';
+import Separator from '../../components/Separator';
+import { useAuth } from '../../context/AuthProvider';
 import styles from './Login.style';
 
 const Login = ({ navigation }) => {
   const [values, setValues] = useState({});
+  const { login } = useAuth();
 
   const goToSignup = () => {
     navigation.navigate('Signup');
@@ -30,6 +32,8 @@ const Login = ({ navigation }) => {
 
       return;
     }
+
+    login(values);
   };
 
   return (
@@ -42,6 +46,7 @@ const Login = ({ navigation }) => {
       >
         <Text style={styles.title}>Native Movie</Text>
       </LinearGradient>
+
       <View style={styles.container}>
         <Text style={styles.heading}>Login</Text>
         <Input
@@ -58,15 +63,16 @@ const Login = ({ navigation }) => {
           onChangeText={onChange('password')}
         />
 
-        <LinearGradient
-          onPress={onSubmit}
-          colors={['#42a1f5', '#03bafc', '#42c5f5']}
-          start={{ x: 0, y: 0 }}
-          end={{ x: 1, y: 0 }}
-          style={styles.button}
-        >
-          <Text style={styles.buttonText}>Login</Text>
-        </LinearGradient>
+        <Pressable onPress={onSubmit}>
+          <LinearGradient
+            colors={['#42a1f5', '#03bafc', '#42c5f5']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>Login</Text>
+          </LinearGradient>
+        </Pressable>
 
         <Separator>Or login with</Separator>
 

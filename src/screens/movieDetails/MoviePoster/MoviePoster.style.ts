@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     ...StyleSheet.absoluteFillObject,
     zIndex: 2,
     padding: 16,
+    justifyContent: 'flex-end',
   },
   progressBarContainer: {
     backgroundColor: 'rgba(255,255,255,0.2)',

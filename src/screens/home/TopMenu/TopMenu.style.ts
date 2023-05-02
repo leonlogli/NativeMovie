@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   title: {
-    color: 'tomato',
+    color: 'lightgreen',
     fontWeight: '600',
     fontSize: 20,
   },
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 16,
     flex: 1,
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-end',
   },
   button: {
     paddingHorizontal: 12,

@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 16,
   },
+  iconContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    gap: 16,
+  },
   actionButton: {
     height: 40,
     borderRadius: 40,
