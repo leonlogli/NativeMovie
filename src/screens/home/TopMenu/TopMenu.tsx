@@ -4,9 +4,9 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+import { useAuth } from '../../../context/AuthProvider';
 import { RootNavigationProp } from '../../../navigations';
 import styles from './TopMenu.style';
-import { useAuth } from '../../../context/AuthProvider';
 
 const avatar = require('../../../assets/avatar.png');
 
@@ -15,11 +15,14 @@ const TopMenu = () => {
   const insets = useSafeAreaInsets();
 
   const { user, logout } = useAuth();
+  const userPhoto = user?.photoURL ? { uri: user?.photoURL } : avatar;
 
   const navigation = useNavigation<RootNavigationProp>();
 
   const goToLogin = () => {
-    navigation.navigate('Login');
+    if (!user) {
+      navigation.navigate('Login');
+    }
   };
 
   return (
@@ -36,14 +39,18 @@ const TopMenu = () => {
           <TouchableOpacity style={styles.button}>
             <Text style={styles.buttonText}>Favorites</Text>
           </TouchableOpacity>
-          {user && (
+          {user ? (
             <TouchableOpacity style={styles.button} onPress={logout}>
               <Text style={styles.buttonText}>Logout</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={styles.button} onPress={goToLogin}>
+              <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
           )}
         </View>
         <TouchableOpacity style={styles.avatarContainer} onPress={goToLogin}>
-          <Image source={avatar} style={styles.avatar} resizeMode="cover" />
+          <Image source={userPhoto} style={styles.avatar} resizeMode="cover" />
         </TouchableOpacity>
       </View>
     </View>
