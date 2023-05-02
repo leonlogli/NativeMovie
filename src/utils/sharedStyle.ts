@@ -8,6 +8,11 @@ const sharedStyle = StyleSheet.create({
     fontWeight: '600',
     color: '#fff',
   },
+  center: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 
 export default sharedStyle;

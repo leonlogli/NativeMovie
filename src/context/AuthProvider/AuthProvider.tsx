@@ -1,7 +1,8 @@
 import React, { ReactNode, createContext, useContext } from 'react';
-import { ActivityIndicator } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 import useFirebaseAuth from './useFirebaseAuth';
+import sharedStyle from '../../utils/sharedStyle';
 
 type AuthContextType = ReturnType<typeof useFirebaseAuth>;
 
@@ -15,7 +16,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const value = useFirebaseAuth();
 
   if (value.loading) {
-    return <ActivityIndicator />;
+    return (
+      <View style={sharedStyle.center}>
+        <ActivityIndicator />
+      </View>
+    );
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
