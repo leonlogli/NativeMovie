@@ -4,7 +4,12 @@ import { useEffect } from 'react';
 
 import env from '../../config/env';
 
-const useGoogleLogin = () => {
+export type UseGoogleLoginOpts = {
+  setErrors?: React.Dispatch<any>;
+  setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const useGoogleLogin = ({ setErrors, setLoading }: UseGoogleLoginOpts = {}) => {
   useEffect(() => {
     GoogleSignin.configure({
       scopes: ['https://www.googleapis.com/auth/drive.readonly'], // what API you want to access on behalf of the user, default is email and profile
@@ -15,16 +20,25 @@ const useGoogleLogin = () => {
   }, []);
 
   const loginWithGoogle = async () => {
-    // Check if your device supports Google Play
-    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
-    // Get the users ID token
-    const { idToken } = await GoogleSignin.signIn();
+    setLoading?.(true);
 
-    // Create a Google credential with the token
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    try {
+      // Check if your device supports Google Play
+      await GoogleSignin.hasPlayServices({
+        showPlayServicesUpdateDialog: true,
+      });
 
-    // Sign-in the user with the credential
-    return auth().signInWithCredential(googleCredential);
+      // Get the users ID token
+      const { idToken } = await GoogleSignin.signIn();
+
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+
+      // Sign-in the user with the credential
+      await auth().signInWithCredential(googleCredential);
+    } catch (error) {
+      setErrors?.(error);
+    }
   };
 
   return { loginWithGoogle };
