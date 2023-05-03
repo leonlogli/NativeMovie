@@ -36,9 +36,15 @@ const Favorites = ({ navigation }: HomeProps) => {
       {movies && (
         <FlatList
           data={movies}
-          keyExtractor={(item) => String(item?.id)}
+          columnWrapperStyle={styles.columnWrapperStyle}
+          numColumns={2}
+          keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => (
-            <MoviePreviewCard onClick={handleMovieClick} movie={item} />
+            <MoviePreviewCard
+              onClick={handleMovieClick}
+              movie={item}
+              style={styles.movieCard}
+            />
           )}
         />
       )}

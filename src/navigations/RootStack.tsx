@@ -33,7 +33,11 @@ const RootStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Home" component={Home} />
     <Stack.Screen name="MovieDetails" component={MovieDetails} />
-    <Stack.Screen name="Favorites" component={Favorites} />
+    <Stack.Screen
+      name="Favorites"
+      component={Favorites}
+      options={{ headerShown: true }}
+    />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Signup" component={Register} />
   </Stack.Navigator>
