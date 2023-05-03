@@ -23,7 +23,7 @@ const MoviePosterActions = ({ movie }: MoviePosterActionsProps) => (
         <Text style={styles.playText}>Play</Text>
       </TouchableOpacity>
 
-      <FavoriteIcon />
+      <FavoriteIcon movie={movie} />
     </View>
   </View>
 );

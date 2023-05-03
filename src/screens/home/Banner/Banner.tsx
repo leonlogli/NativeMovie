@@ -12,26 +12,25 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import FavoriteIcon from '../../../components/FavoriteIcon';
 import { MOVIE_IMAGE_URL } from '../../../config/constants';
 import movieListService from '../../../services/movieListService';
 import styles from './Banner.style';
-import FavoriteIcon from '../../../components/FavoriteIcon';
 
 const Banner = () => {
   const nowPlayingMoviesQuery = useQuery(
-    ['now-polaying-movies'],
+    ['getNowPlayingMovies'],
     movieListService.getNowPlayingMovies,
   );
 
   const theme = useTheme();
+
   const featuredIndex = useMemo(() => Math.floor(Math.random() * 19), []);
 
   const featuredMovie = useMemo(
-    () =>
-      nowPlayingMoviesQuery.isSuccess
-        ? nowPlayingMoviesQuery.data.results[featuredIndex]
-        : null,
-    [nowPlayingMoviesQuery, featuredIndex],
+    () => nowPlayingMoviesQuery.data?.results[featuredIndex],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [featuredIndex],
   );
 
   return (
@@ -64,7 +63,7 @@ const Banner = () => {
             <Icons name="play" size={22} color="#000" />
             <Text style={styles.playButtonText}>Play</Text>
           </TouchableOpacity>
-          <FavoriteIcon />
+          {featuredMovie && <FavoriteIcon movie={featuredMovie} />}
         </View>
       </View>
     </View>

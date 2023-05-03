@@ -4,18 +4,19 @@ import {
 } from '@react-navigation/native-stack';
 import React from 'react';
 
-import { ID } from '../config/api';
-import MovieDetails from '../screens/movieDetails';
-// import AuthStack from './AuthStack';
 import { NavigationProp } from '@react-navigation/native';
-import Login from '../screens/Login';
-import Register from '../screens/Register';
+import { ID } from '../config/api';
+import Favorites from '../screens/Favorites';
 import Home from '../screens/home/Home';
+import Login from '../screens/Login';
+import MovieDetails from '../screens/movieDetails';
+import Register from '../screens/Register';
 
 export type RootStackParamList = {
   Home: undefined;
   Signup: undefined;
   Login: undefined;
+  Favorites: undefined;
   MovieDetails: {
     movieId: ID;
   };
@@ -32,6 +33,7 @@ const RootStack = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
     <Stack.Screen name="Home" component={Home} />
     <Stack.Screen name="MovieDetails" component={MovieDetails} />
+    <Stack.Screen name="Favorites" component={Favorites} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Signup" component={Register} />
   </Stack.Navigator>

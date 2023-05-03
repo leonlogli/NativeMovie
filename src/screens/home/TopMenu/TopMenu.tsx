@@ -25,6 +25,10 @@ const TopMenu = () => {
     }
   };
 
+  const goToFavorites = () => {
+    navigation.navigate('Favorites');
+  };
+
   return (
     <View style={[styles.root, { paddingTop: insets.top }]}>
       <LinearGradient
@@ -36,7 +40,7 @@ const TopMenu = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Native Movie</Text>
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={goToFavorites}>
             <Text style={styles.buttonText}>Favorites</Text>
           </TouchableOpacity>
           {user ? (

@@ -9,8 +9,6 @@ type LoginInput = { email: string; password: string };
 
 type SignupInput = { email: string; password: string; name: string };
 
-export let currentUser: User | undefined | null;
-
 const useFirebaseAuth = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -68,8 +66,6 @@ const useFirebaseAuth = () => {
     return unsubscribe;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  currentUser = user;
 
   return {
     loading,

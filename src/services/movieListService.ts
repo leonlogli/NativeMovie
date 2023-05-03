@@ -25,6 +25,17 @@ export type Movie = {
   vote_count: number;
 };
 
+export type MoviePreview = Pick<
+  Movie,
+  | 'id'
+  | 'title'
+  | 'poster_path'
+  | 'backdrop_path'
+  | 'vote_average'
+  | 'release_date'
+  | 'vote_count'
+>;
+
 const getPopularMoves = async () => {
   return api.get<MovieList>(`${MOVIE_API_URL}/movie/popular`);
 };

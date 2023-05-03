@@ -3,15 +3,15 @@ import React from 'react';
 import { Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 import { MOVIE_IMAGE_URL } from '../../config/constants';
-import { Movie } from '../../services/movieListService';
-import styles from './MoviePreview.style';
+import { MoviePreview } from '../../services/movieListService';
+import styles from './MoviePreviewCard.style';
 
-export type HorizontalMovieListProps = {
-  movie: Movie;
-  onClick: (movie: Movie) => void;
+export type MoviePreviewCardProps = {
+  movie: MoviePreview;
+  onClick: (movie: MoviePreview) => void;
 };
 
-const MoviePreview = ({ movie, onClick }: HorizontalMovieListProps) => {
+const MoviePreviewCard = ({ movie, onClick }: MoviePreviewCardProps) => {
   const { colors } = useTheme();
 
   const handlePress = () => onClick(movie);
@@ -30,4 +30,4 @@ const MoviePreview = ({ movie, onClick }: HorizontalMovieListProps) => {
   );
 };
 
-export default MoviePreview;
+export default MoviePreviewCard;

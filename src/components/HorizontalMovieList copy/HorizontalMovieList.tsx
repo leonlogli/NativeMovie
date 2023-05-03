@@ -1,11 +1,18 @@
-import { useTheme } from '@react-navigation/native';
 import { UseQueryResult } from '@tanstack/react-query';
 import React from 'react';
-import { Button, FlatList, Text, View } from 'react-native';
+import {
+  Button,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { useTheme } from '@react-navigation/native';
 
+import { MOVIE_IMAGE_URL } from '../../config/constants';
 import { Movie, MovieList } from '../../services/movieListService';
-import sharedStyle from '../../utils/sharedStyle';
-import MoviePreviewCard from '../MoviePreviewCard/MoviePreviewCard';
 import styles from './HorizontalMovieList.style';
 
 export type HorizontalMovieListProps = UseQueryResult<MovieList, unknown> & {
@@ -16,7 +23,7 @@ export type HorizontalMovieListProps = UseQueryResult<MovieList, unknown> & {
 const ItemSeparatorComponent = () => <View style={styles.itemSeparator} />;
 
 const HorizontalMovieList = ({
-  data,
+  movies: data,
   isLoading,
   isError,
   refetch,
@@ -28,7 +35,7 @@ const HorizontalMovieList = ({
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
-        <Text style={sharedStyle.title}>{title}</Text>
+        <Text style={styles.title}>{title}</Text>
       </View>
 
       {isLoading && (
@@ -61,7 +68,16 @@ const HorizontalMovieList = ({
           showsHorizontalScrollIndicator={false}
           ItemSeparatorComponent={ItemSeparatorComponent}
           renderItem={({ item }) => (
-            <MoviePreviewCard onClick={onMoviePress} movie={item} />
+            <TouchableOpacity
+              onPress={() => onMoviePress(item)}
+              style={[styles.movieContainer, { backgroundColor: colors.card }]}
+            >
+              <Image
+                source={{ uri: `${MOVIE_IMAGE_URL}${item.poster_path}` }}
+                style={StyleSheet.absoluteFill}
+                resizeMode="cover"
+              />
+            </TouchableOpacity>
           )}
         />
       )}

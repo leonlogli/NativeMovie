@@ -5,30 +5,30 @@ import { ScrollView, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import HorizontalMovieList from '../../../components/HorizontalMovieList';
+import { RootStackScreenProps } from '../../../navigations';
 import movieListService, { Movie } from '../../../services/movieListService';
 import Banner from '../Banner';
 import TopMenu from '../TopMenu';
 import styles from './Home.style';
-import { AuthStackScreenProps } from '../../../navigations/AuthStack';
 
-export type HomeProps = AuthStackScreenProps<'Home'>;
+export type HomeProps = RootStackScreenProps<'Home'>;
 
 const Home = ({ navigation }: HomeProps) => {
   const theme = useTheme();
   const insets = useSafeAreaInsets();
 
   const popularMoviesQuery = useQuery(
-    ['popular-movies'],
+    ['getPopularMoves'],
     movieListService.getPopularMoves,
   );
 
   const nowPlayingMoviesQuery = useQuery(
-    ['now-polaying-movies'],
+    ['getNowPlayingMovies'],
     movieListService.getNowPlayingMovies,
   );
 
   const upcomingQuery = useQuery(
-    ['upcoming-movies'],
+    ['getUpcomingMovies'],
     movieListService.getUpcomingMovies,
   );
 
