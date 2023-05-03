@@ -37,19 +37,16 @@ const extractFavoriteMovieInfo = (movie: MoviePreview) => {
 
 const isFavorite = async (movieId: ID, userId?: ID) => {
   const uid = userId || currentUser?.uid;
+  const docId = `${uid}${movieId}`;
 
-  const res = await favoriteCollections
-    .where('userId', '==', uid)
-    .where('id', '==', movieId)
-    .limit(1)
-    .get();
+  const res = await favoriteCollections.doc(docId).get();
 
-  return res.docs.find((doc) => doc.data());
+  return res.data() || false;
 };
 
-type AddFavoriteInput = { movie: MoviePreview; userId?: ID };
+type AddFavoriteInput = MoviePreview & { userId?: ID };
 
-const addFavorite = async ({ movie, userId }: AddFavoriteInput) => {
+const addFavorite = async ({ userId, ...movie }: AddFavoriteInput) => {
   const uid = userId || currentUser?.uid;
   const favoriteMovie = extractFavoriteMovieInfo(movie);
 

@@ -1,30 +1,22 @@
-import React from 'react';
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useAuth } from '../../context/AuthProvider';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { ID } from '../../config/api';
 import favoriteService, { FavoriteMovie } from '../../services/favoriteService';
 import { MoviePreview } from '../../services/movieListService';
-import styles from './FavoriteIcon.style';
 
-export type FavoriteIconProps = TouchableOpacityProps & {
+export type UseToggleFavoriteOpts = {
   movie: MoviePreview;
+  favorite?: boolean;
+  userId?: ID;
 };
 
-const FavoriteIcon = ({ style, movie }: FavoriteIconProps) => {
+const useToggleFavorite = ({
+  favorite,
+  userId,
+  movie,
+}: UseToggleFavoriteOpts) => {
   const queryClient = useQueryClient();
-  const { user } = useAuth();
 
-  const userId = user?.uid;
   const movieId = movie.id;
-
-  const { data: favorite } = useQuery(
-    ['isFavorite', movieId, userId],
-    ({ queryKey }) =>
-      favoriteService.isFavorite(queryKey[1] as string, queryKey[2]),
-    { enabled: !!userId && !!movieId },
-  );
 
   const removeFavMuation = useMutation(favoriteService.removeFavorite, {
     // Handle Optimistic Updates
@@ -125,18 +117,7 @@ const FavoriteIcon = ({ style, movie }: FavoriteIconProps) => {
     return addFavMuation.mutate({ ...movie, userId });
   };
 
-  return (
-    <TouchableOpacity
-      style={[styles.container, style]}
-      onPress={toggleFavorite}
-    >
-      <MaterialIcons
-        name={favorite ? 'favorite' : 'favorite-outline'}
-        size={22}
-        color="#fff"
-      />
-    </TouchableOpacity>
-  );
+  return { toggleFavorite };
 };
 
-export default FavoriteIcon;
+export default useToggleFavorite;

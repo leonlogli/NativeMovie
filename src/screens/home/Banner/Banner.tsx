@@ -30,7 +30,7 @@ const Banner = () => {
   const featuredMovie = useMemo(
     () => nowPlayingMoviesQuery.data?.results[featuredIndex],
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [featuredIndex],
+    [nowPlayingMoviesQuery.isSuccess, featuredIndex],
   );
 
   return (
