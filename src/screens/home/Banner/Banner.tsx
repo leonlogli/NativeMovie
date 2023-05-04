@@ -1,18 +1,11 @@
 import { useTheme } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 import React, { useMemo } from 'react';
-import {
-  ActivityIndicator,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import FavoriteIcon from '../../../components/FavoriteIcon';
+import PlayMovieButton from '../../../components/PlayMovieButton/PlayMovieButton';
 import { MOVIE_IMAGE_URL } from '../../../config/constants';
 import movieListService from '../../../services/movieListService';
 import styles from './Banner.style';
@@ -59,10 +52,7 @@ const Banner = () => {
       <View style={[StyleSheet.absoluteFill, styles.buttonContainer]}>
         <View style={styles.flex1} />
         <View style={styles.buttonGroup}>
-          <TouchableOpacity style={styles.playButton}>
-            <Icons name="play" size={22} color="#000" />
-            <Text style={styles.playButtonText}>Play</Text>
-          </TouchableOpacity>
+          {featuredMovie && <PlayMovieButton movie={featuredMovie} />}
           {featuredMovie && <FavoriteIcon movie={featuredMovie} />}
         </View>
       </View>

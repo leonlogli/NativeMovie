@@ -47,6 +47,22 @@ export type SpokenLanguage = {
   name: string;
 };
 
+export type MovieVideo = {
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+};
+
+export type MovieVideoList = {
+  id: number;
+  results: MovieVideo[];
+};
+
 const getMovie = async (movieId: ID) => {
   return api.get<MovieDetails>(`${MOVIE_API_URL}/movie/${movieId}`);
 };
@@ -55,7 +71,12 @@ const getRecommendations = async (movieId: ID) => {
   return api.get<MovieList>(`/movie/${movieId}/recommendations`);
 };
 
+const getVideos = async (movieId: ID) => {
+  return api.get<MovieVideoList>(`${MOVIE_API_URL}/movie/${movieId}/videos`);
+};
+
 export default {
   getMovie,
   getRecommendations,
+  getVideos,
 };

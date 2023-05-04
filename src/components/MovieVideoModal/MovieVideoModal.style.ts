@@ -1,17 +1,21 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  actionsContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    gap: 16,
+  modalContainer: {
+    flex: 1,
+    backgroundColor: 'white',
   },
-  iconContainer: {
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 16,
+    padding: 20,
+  },
+  modalContent: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
-    gap: 16,
+    position: 'relative',
   },
 });
 

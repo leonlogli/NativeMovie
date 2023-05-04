@@ -29,19 +29,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 16,
   },
-  playButton: {
-    backgroundColor: '#ffffff',
-    paddingHorizontal: 16,
-    height: 40,
-    alignItems: 'center',
-    borderRadius: 40,
-    flexDirection: 'row',
-    gap: 4,
-  },
-  playButtonText: {
-    color: '#000',
-    fontWeight: '600',
-  },
   favButton: {
     backgroundColor: 'rgba(255,255,255,0.2)',
     width: 40,

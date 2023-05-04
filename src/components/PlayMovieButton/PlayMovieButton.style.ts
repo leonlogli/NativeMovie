@@ -1,18 +1,17 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  actionsContainer: {
+  container: {
+    height: 40,
+    borderRadius: 40,
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row',
-    gap: 16,
+    gap: 4,
+    backgroundColor: '#ffffff',
+    paddingHorizontal: 16,
   },
-  iconContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    gap: 16,
-  },
+  playText: { color: '#000', fontWeight: '600' },
 });
 
 export default styles;

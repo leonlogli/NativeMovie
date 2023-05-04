@@ -6,6 +6,7 @@ import FavoriteIcon from '../../../components/FavoriteIcon';
 import type { MovieDetails } from '../../../services/movieDetailsService';
 import sharedStyle from '../../../utils/sharedStyle';
 import styles from './MoviePosterActions.style';
+import PlayMovieButton from '../../../components/PlayMovieButton/PlayMovieButton';
 
 export type MoviePosterActionsProps = {
   movie: MovieDetails;
@@ -18,11 +19,7 @@ const MoviePosterActions = ({ movie }: MoviePosterActionsProps) => (
     </View>
 
     <View style={styles.iconContainer}>
-      <TouchableOpacity style={[styles.actionButton, styles.playButton]}>
-        <Icons name="play" size={22} color="#000" />
-        <Text style={styles.playText}>Play</Text>
-      </TouchableOpacity>
-
+      <PlayMovieButton movie={movie} />
       <FavoriteIcon movie={movie} />
     </View>
   </View>
