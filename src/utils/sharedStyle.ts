@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
+import colors from './colors';
 
 const sharedStyle = StyleSheet.create({
   flex1: { flex: 1 },
   title: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#fff',
+    color: colors.text.primary,
   },
   center: {
     flex: 1,

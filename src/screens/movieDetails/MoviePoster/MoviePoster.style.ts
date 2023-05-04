@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { POSTER_ASPECT_RATIO } from '../../../config/constants';
+import colors from '../../../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   progressBarContainer: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: colors.action.selected,
     borderRadius: 4,
     position: 'relative',
     marginBottom: 16,

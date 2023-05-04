@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../../utils/colors';
+
 const styles = StyleSheet.create({
   root: {
     position: 'absolute',
@@ -15,7 +17,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   backButtonContainer: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: colors.action.selected,
     height: 40,
     width: 40,
     justifyContent: 'center',
@@ -25,7 +27,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   castButtonContainer: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: colors.action.selected,
     height: 40,
     width: 40,
     justifyContent: 'center',

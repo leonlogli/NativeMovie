@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   starIcon: {
-    color: '#facc15',
+    color: colors.primary.main,
   },
 });
 

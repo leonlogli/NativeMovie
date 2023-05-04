@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { Alert, Text, View, Pressable } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import GoogleLogin from '../../components/GoogleLogin';
 import Input from '../../components/Input';
 import Separator from '../../components/Separator';
 import { useAuth } from '../../context/AuthProvider';
+import colors from '../../utils/colors';
 import styles from './Login.style';
+import validateLogin from './Login.validation';
 
 const Login = ({ navigation }) => {
   const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
   const { login } = useAuth();
 
   const goToSignup = () => {
@@ -18,19 +21,14 @@ const Login = ({ navigation }) => {
 
   const onChange = (name) => (value) => {
     setValues((v) => ({ ...v, [name]: value }));
+    setErrors((v) => ({ ...v, [name]: null }));
   };
 
   const onSubmit = async () => {
-    if (!values?.email) {
-      Alert.alert('Email is required');
+    const err = validateLogin(values);
 
-      return;
-    }
-
-    if (!values?.password) {
-      Alert.alert('Password is required');
-
-      return;
+    if (Object.keys(err).length) {
+      return setErrors({ ...errors, ...err });
     }
 
     login(values);
@@ -39,7 +37,7 @@ const Login = ({ navigation }) => {
   return (
     <View>
       <LinearGradient
-        colors={['#42a1f5', '#03bafc', '#42c5f5']}
+        colors={[colors.primary.dark, colors.primary.dark, colors.primary.main]}
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         style={styles.linearGradient}
@@ -54,6 +52,7 @@ const Login = ({ navigation }) => {
           placeholder="johndoe@gmail.com"
           keyboardType="email-address"
           onChangeText={onChange('email')}
+          error={errors.email}
         />
         <Input
           title="Password"
@@ -61,11 +60,12 @@ const Login = ({ navigation }) => {
           keyboardType="default"
           secureTextEntry
           onChangeText={onChange('password')}
+          error={errors.password}
         />
 
         <Pressable onPress={onSubmit}>
           <LinearGradient
-            colors={['#42a1f5', '#03bafc', '#42c5f5']}
+            colors={[colors.primary.dark, colors.primary.main]}
             start={{ x: 0, y: 0 }}
             end={{ x: 1, y: 0 }}
             style={styles.button}

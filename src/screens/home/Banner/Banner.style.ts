@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { POSTER_ASPECT_RATIO } from '../../../config/constants';
+import colors from '../../../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   favButton: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: colors.action.selected,
     width: 40,
     height: 40,
     alignItems: 'center',
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     gap: 4,
   },
   addButtonText: {
-    color: '#fff',
+    color: colors.text.primary,
     fontWeight: '600',
   },
   flex1: {

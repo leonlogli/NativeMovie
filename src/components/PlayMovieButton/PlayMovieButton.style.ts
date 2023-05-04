@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,10 +9,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 4,
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.text.primary,
     paddingHorizontal: 16,
   },
-  playText: { color: '#000', fontWeight: '600' },
+  playText: { color: colors.background.default, fontWeight: '600' },
 });
 
 export default styles;

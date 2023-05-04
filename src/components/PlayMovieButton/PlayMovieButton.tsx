@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import { TRAILER_BASE_LINK } from '../../config/constants';
 import movieDetailsService from '../../services/movieDetailsService';
 import { Movie } from '../../services/movieListService';
-import MovieVideoModal from '../MovieVideoModal/MovieVideoModal';
+import MovieVideoModal from '../MovieVideoModal';
 import styles from './PlayMovieButton.style';
 
 export type PlayMovieButtonProps = {

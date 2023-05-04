@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import colors from '../../../utils/colors';
 
 const styles = StyleSheet.create({
   root: {
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     gap: 16,
   },
   title: {
-    color: 'lightgreen',
+    color: colors.primary.main,
     fontWeight: '600',
     fontSize: 20,
   },
@@ -29,14 +30,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 30,
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: colors.action.selected,
   },
   buttonText: {
-    color: '#fff',
+    color: colors.text.primary,
     fontWeight: '600',
   },
   avatarContainer: {
-    backgroundColor: 'rgba(255,255,255,0.2)',
+    backgroundColor: colors.action.selected,
     width: 40,
     height: 40,
     borderRadius: 8,

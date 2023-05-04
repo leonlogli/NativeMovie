@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
+
 import { vh } from '../../utils/dimensions';
+import colors from '../../utils/colors';
 
 const styles = StyleSheet.create({
   linearGradient: {
@@ -11,13 +13,13 @@ const styles = StyleSheet.create({
     paddingTop: 40,
   },
   title: {
-    color: 'white',
+    color: colors.text.primary,
     fontSize: 31,
     fontWeight: 'bold',
   },
   container: {
     elevation: 10,
-    backgroundColor: 'white',
+    backgroundColor: colors.background.paper,
     borderRadius: 10,
     margin: 10,
     marginTop: -20,
@@ -27,7 +29,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 19,
     fontWeight: 'bold',
-    color: '#03bafc',
+    color: colors.primary.main,
     textAlign: 'center',
   },
   button: {
@@ -39,11 +41,11 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   buttonText: {
-    color: 'white',
+    color: colors.text.primary,
     fontSize: 19,
   },
   link: {
-    color: '#03bafc',
+    color: colors.primary.main,
     fontSize: 16,
     textAlign: 'center',
     marginTop: 16,

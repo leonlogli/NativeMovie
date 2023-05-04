@@ -1,5 +1,7 @@
 import { StyleSheet } from 'react-native';
 
+import colors from '../../utils/colors';
+
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
@@ -8,11 +10,12 @@ export const styles = StyleSheet.create({
   },
   line: {
     height: 1,
-    backgroundColor: '#DADADA',
+    backgroundColor: colors.divider,
     flex: 1,
   },
   text: {
     fontWeight: '500',
     marginHorizontal: 8,
+    color: colors.text.primary,
   },
 });
