@@ -30,6 +30,8 @@ const useFirebaseAuth = () => {
       userCredential.user.updateProfile({ displayName: name });
     } catch (error) {
       setErrors(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,6 +46,8 @@ const useFirebaseAuth = () => {
       setUser(userCredential.user);
     } catch (error) {
       setErrors(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -56,14 +60,23 @@ const useFirebaseAuth = () => {
     }
   };
 
-  useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged((newUser) => {
-      setUser(newUser);
+  const onAuthStateChanged = (newUser: User | null) => {
+    setUser(newUser);
 
-      if (loading) {
-        setLoading(false);
-      }
-    });
+    if (loading) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth().onAuthStateChanged(onAuthStateChanged);
+
+    return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = auth().onIdTokenChanged(onAuthStateChanged);
 
     return unsubscribe;
     // eslint-disable-next-line react-hooks/exhaustive-deps

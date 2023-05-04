@@ -21,6 +21,13 @@ const validateRegister = ({ name, email, password }: ValidateRegisterOpts) => {
     errors = { ...errors, email: 'Email required' };
   }
 
+  if (password && password.length < 6) {
+    errors = {
+      ...errors,
+      password: 'Password should be at least 6 characters',
+    };
+  }
+
   if (!password) {
     errors = { ...errors, password: 'Password required' };
   }
