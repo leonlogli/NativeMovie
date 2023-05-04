@@ -2,6 +2,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ID } from '../../config/api';
 import favoriteService, { FavoriteMovie } from '../../services/favoriteService';
 import { MoviePreview } from '../../services/movieListService';
+import { useNavigation } from '@react-navigation/native';
+import { RootNavigationProp } from '../../navigations';
 
 export type UseToggleFavoriteOpts = {
   movie: MoviePreview;
@@ -15,6 +17,7 @@ const useToggleFavorite = ({
   movie,
 }: UseToggleFavoriteOpts) => {
   const queryClient = useQueryClient();
+  const navigation = useNavigation<RootNavigationProp>();
 
   const movieId = movie.id;
 
@@ -110,6 +113,12 @@ const useToggleFavorite = ({
   });
 
   const toggleFavorite = () => {
+    if (!userId) {
+      navigation.navigate('Login');
+
+      return;
+    }
+
     if (favorite) {
       return removeFavMuation.mutate({ movieId: movieId, userId });
     }

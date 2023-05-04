@@ -36,6 +36,8 @@ const useGoogleLogin = ({ setErrors, setLoading }: UseGoogleLoginOpts = {}) => {
       await auth().signInWithCredential(googleCredential);
     } catch (error) {
       setErrors?.(error);
+    } finally {
+      setLoading?.(false);
     }
   };
 
