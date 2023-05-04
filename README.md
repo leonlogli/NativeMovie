@@ -8,6 +8,10 @@ React native movie app using react-native cli
 yarn install
 ```
 
+### Environnements
+
+Rename .env.sample to .env
+
 ## Build android/ios
 
 ```
